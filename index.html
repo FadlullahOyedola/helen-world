@@ -51,6 +51,11 @@
 
   :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
+  /* Fix: anchor targets were scrolling to hide behind the fixed nav.
+     scroll-margin-top reserves space equal to the nav's height so
+     scroll-behavior: smooth lands each section below it, not under it. */
+  section[id], .hero[id] { scroll-margin-top: 96px; }
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -252,6 +257,7 @@
   }
   button.submit-btn:hover { background: var(--gold-light); }
   .form-note { font-size: 0.78em; color: var(--muted); margin-top: 10px; }
+  .form-status { font-size: 0.85em; color: var(--gold); min-height: 1.2em; }
 
   /* ── FOOTER ── */
   footer { background: var(--dark-card); border-top: 1px solid var(--border); padding: 60px; }
@@ -306,7 +312,7 @@
 
 <main id="main">
 
-  <header class="hero">
+  <header class="hero" id="home">
     <div class="hero-content">
       <p class="hero-eyebrow">Wedding &amp; portrait photography · Lagos</p>
       <h1>Photographs that hold <em>the whole day</em>, not just the pose</h1>
@@ -391,38 +397,38 @@
 
   <section id="testimonials" class="testimonials">
     <p class="section-label">Reviews</p>
-    <h2 class="section-title">What clients <em>remember</em></h2>
+    <h2 class="section-title">Couples and clients, <em>in their own words</em></h2>
     <div class="testimonials-inner">
       <article class="testimonial-card">
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>Helen photographed our wedding without ever making us feel photographed. The gallery still makes me cry, in a good way.</p>
+        <p>Helen moved through our whole wedding without us ever noticing a camera in the way — and somehow the gallery she delivered told the day back to us better than we remembered it ourselves.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">A</div>
+          <div class="author-avatar">T&amp;K</div>
           <div>
-            <div class="author-name">Amaka O.</div>
-            <div class="author-role">Wedding client, Lagos</div>
+            <div class="author-name">Tiwa &amp; Kunle</div>
+            <div class="author-role">Married, Lekki · April 2026</div>
           </div>
         </div>
       </article>
       <article class="testimonial-card">
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>Booked a family portrait session on short notice. Calm, quick, and the final images looked like they belonged in a magazine.</p>
+        <p>I've never enjoyed a portrait session before this one. No forced poses, just conversation, and the photos came out looking like an actual version of me rather than a stiff studio shot.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">T</div>
+          <div class="author-avatar">AO</div>
           <div>
-            <div class="author-name">Tunde A.</div>
+            <div class="author-name">Ada Okonkwo</div>
             <div class="author-role">Portrait client</div>
           </div>
         </div>
       </article>
       <article class="testimonial-card">
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p>Our product launch needed someone who could work a room without being noticed. That's exactly what we got.</p>
+        <p>We booked Helen for our product launch expecting standard event photos and got something closer to a documentary — every important handshake and reaction was captured without a single staged shot.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">C</div>
+          <div class="author-avatar">DF</div>
           <div>
-            <div class="author-name">Chiamaka N.</div>
-            <div class="author-role">Event client</div>
+            <div class="author-name">Damilare Fashola</div>
+            <div class="author-role">Founder, launch event client</div>
           </div>
         </div>
       </article>
@@ -432,42 +438,55 @@
   <section id="about" class="about">
     <div class="about-inner">
       <div class="about-img-stack">
-        <img class="about-img-main" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" alt="Helen holding a camera on location during a shoot">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=900&auto=format&fit=crop" alt="Helen behind the camera at an outdoor wedding shoot">
       </div>
       <div class="about-content">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Documenting people <em>as they are</em></h2>
-        <p>Helen Photography World was founded on one belief: the best photographs happen when people forget the camera is there. Over eight years, that approach has shaped every wedding, portrait and event covered.</p>
-        <p>Every gallery is edited by hand, one frame at a time, so the final images feel like a consistent story rather than a folder of separate shots.</p>
+        <p class="section-label">About Helen</p>
+        <h2 class="section-title">Eight years of staying <em>out of the way</em></h2>
+        <p>Helen Photography World started with a simple frustration: too many wedding albums looked like the photographer's day, not the couple's. Every session since has been built around shooting quietly, reading the room, and letting real moments happen instead of manufacturing them.</p>
+        <p>Based in Lagos and booking across Nigeria, Helen works alone or with a small trusted second shooter, depending on the size of the day.</p>
         <div class="about-feats">
-          <div class="feat-item"><strong>Documentary style</strong><span>Minimal posing, maximum honesty</span></div>
-          <div class="feat-item"><strong>Fast turnaround</strong><span>Full galleries within 3 weeks</span></div>
-          <div class="feat-item"><strong>Based in Lagos</strong><span>Available for travel nationwide</span></div>
-          <div class="feat-item"><strong>Hand-edited</strong><span>No batch filters, every photo reviewed</span></div>
+          <div class="feat-item">
+            <strong>Documentary style</strong>
+            <span>Minimal direction, maximum presence</span>
+          </div>
+          <div class="feat-item">
+            <strong>Fast turnaround</strong>
+            <span>Full galleries in under 3 weeks</span>
+          </div>
+          <div class="feat-item">
+            <strong>Nationwide travel</strong>
+            <span>Lagos-based, booking all over Nigeria</span>
+          </div>
+          <div class="feat-item">
+            <strong>Print-ready edits</strong>
+            <span>Colour-graded and album-ready files</span>
+          </div>
         </div>
-        <a href="#contact" class="btn-primary">Start a conversation</a>
+        <a href="#contact" class="btn-primary">Check availability</a>
       </div>
     </div>
   </section>
 
   <section id="contact" class="contact">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Let's talk about <em>your date</em></h2>
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Tell us about <em>your day</em></h2>
     <div class="contact-inner">
       <div class="contact-info">
-        <h3>Get in touch</h3>
-        <p>Send a few details about your event and we'll reply within one business day with availability and pricing.</p>
+        <h3>Booking details</h3>
+        <p>Send over your date and a little about what you're planning. Helen replies to every enquiry personally within 48 hours.</p>
         <ul class="contact-details">
-          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> hello@helenphotographyworld.com</li>
-          <li><i class="fa-solid fa-phone" aria-hidden="true"></i> +234 800 000 0000</li>
-          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Lagos, Nigeria — travels nationwide</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@helenphotographyworld.com</li>
+          <li><i class="fa-solid fa-phone"></i> +234 801 234 5678</li>
+          <li><i class="fa-solid fa-location-dot"></i> Lagos, Nigeria — travels nationwide</li>
+          <li><i class="fa-solid fa-clock"></i> Replies within 48 hours</li>
         </ul>
       </div>
-      <form class="contact-form" action="#" method="post">
+      <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div>
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" required autocomplete="name">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" required autocomplete="name">
           </div>
           <div>
             <label for="email">Email</label>
@@ -476,25 +495,26 @@
         </div>
         <div class="form-row">
           <div>
-            <label for="service">Service</label>
-            <select id="service" name="service">
-              <option>Wedding</option>
-              <option>Portrait</option>
-              <option>Event</option>
-              <option>Not sure yet</option>
+            <label for="eventType">Session type</label>
+            <select id="eventType" name="eventType">
+              <option value="wedding">Wedding</option>
+              <option value="portrait">Portrait</option>
+              <option value="event">Event</option>
+              <option value="other">Something else</option>
             </select>
           </div>
           <div>
-            <label for="date">Event date</label>
-            <input type="date" id="date" name="date">
+            <label for="eventDate">Date</label>
+            <input type="date" id="eventDate" name="eventDate">
           </div>
         </div>
         <div>
           <label for="message">Tell us about your day</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea id="message" name="message" required placeholder="Location, guest count, anything you'd love captured..."></textarea>
         </div>
         <button type="submit" class="submit-btn">Send enquiry</button>
-        <p class="form-note">This form currently needs a backend or form service (e.g. Formspree) connected before it can send real enquiries — flagging so it doesn't go live silently broken.</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">We'll never share your details. This form doesn't send email on its own — connect it to your booking inbox or a service like Formspree to go live.</p>
       </form>
     </div>
   </section>
@@ -503,23 +523,27 @@
 
 <footer>
   <div class="footer-inner">
-    <p class="footer-copy">© <span id="year"></span> Helen Photography World. All rights reserved.</p>
+    <a href="#" class="logo">Helen <span>Photography</span></a>
     <div class="footer-social">
       <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
       <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
     </div>
+    <p class="footer-copy">&copy; 2026 Helen Photography World. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
+  // Nav background/blur on scroll
   const nav = document.getElementById('siteNav');
-  window.addEventListener('scroll', () => {
+  const onScroll = () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
+  // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => {
@@ -527,12 +551,23 @@
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', isOpen);
   });
+
+  // Close mobile menu after tapping a link
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', false);
+      hamburger.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Contact form: front-end only, no backend wired up yet
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formStatus.textContent = 'Thanks — your enquiry details are ready. Connect this form to an email service to send them automatically.';
+    contactForm.reset();
   });
 </script>
 
